@@ -12,11 +12,11 @@ debug: false
 request-retry: 3
 
 api-keys:
-  - "${PROXY_API_KEY}"
+  - "chen"
 
 remote-management:
   allow-remote: true
-  secret-key: "${MANAGEMENT_PASSWORD}"
+  secret-key: "xcc990718"
 EOF
 
 exec /CLIProxyAPI/CLIProxyAPI
