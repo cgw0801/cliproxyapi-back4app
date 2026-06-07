@@ -1,10 +1,16 @@
 FROM --platform=linux/amd64 docker.io/eceasy/cli-proxy-api:latest
 
-WORKDIR /CLIProxyAPI
+  USER root
 
-COPY start.sh /CLIProxyAPI/start.sh
-RUN chmod +x /CLIProxyAPI/start.sh
+  RUN apk add --no-cache nginx
 
-EXPOSE 8317
+  WORKDIR /CLIProxyAPI
 
-CMD ["/CLIProxyAPI/start.sh"]
+  COPY start.sh /CLIProxyAPI/start.sh
+
+  RUN chmod +x /CLIProxyAPI/start.sh \
+      && mkdir -p /run/nginx /root/.cli-proxy-api /CLIProxyAPI/logs
+
+  EXPOSE 8317
+
+  CMD ["/CLIProxyAPI/start.sh"]
